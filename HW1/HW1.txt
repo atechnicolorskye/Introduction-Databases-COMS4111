@@ -1,0 +1,65 @@
+CREATE TABLE Professor{
+	ssn int PRIMARY KEY,
+	p_name text,
+	}
+	
+CREATE TABLE Junior{
+	ssn int PRIMARY KEY,
+	since_hired date,
+	FOREIGN KEY(ssn) REFERENCES Professor
+	}
+	
+CREATE TABLE Tenured{
+	ssn int PRIMARY KEY,
+	since_tenured date,
+	FOREIGN KEY(ssn) REFERENCES Professor
+	}
+
+CREATE TABLE Department{
+	d_name text PRIMARY KEY
+	}
+	
+CREATE TABLE is_affiliated_with{
+	ssn int,
+	d_name text,
+	PRIMARY KEY(ssn, d_name),
+	FOREIGN KEY(ssn) REFERENCES Professor,
+	FOREIGN KEY(d_name) REFERENCES Department
+	}
+
+CREATE TABLE has_chair{
+	ssn int NOT NULL,
+	since_tenured date NOT NULL
+	d_name text,
+	PRIMARY KEY(d_name),
+	FOREIGN KEY(ssn) REFERENCES Professor,
+	FOREIGN KEY(since_tenured) REFERENCES Tenured,
+	FOREIGN KEY(d_name) REFERENCES Department
+	}
+
+CREATE TABLE Course{
+	c_no int,
+	c_name text,
+	c_capac int,
+	d_name text,
+	PRIMARY KEY(c_no, d_name),
+	FOREIGN KEY(d_name) REFERENCES Department
+		ON DELETE CASCADE
+	}
+
+CREATE TABLE Term{
+	t_semester text,
+	t_year date,
+	PRIMARY KEY(t_semester, t_year),
+	}
+
+CREATE TABLE is_taught{
+	c_no int,
+	ssn int,
+	t_semester text,
+	t_year date,
+	PRIMARY KEY(c_no, t_semester, t_year)
+	FOREIGN KEY(c_no) REFERENCES Courses
+	FOREIGN KEY(ssn) REFERENCES Professor
+	FOREIGN KEY(t_semester) REFERENCES Term
+	FOREIGN KEY(t_year) REFERENCES Term
