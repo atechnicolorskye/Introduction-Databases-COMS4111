@@ -41,7 +41,8 @@ CREATE TABLE Course_Department(
 		ON DELETE CASCADE
 	)
 
-According to the requirements, course department is a weak entity dependent on deparment as it is stated that the course number only uniquely identifies courses within a department.
+According to the requirements, course department is a weak entity dependent on 
+ as it is stated that the course number only uniquely identifies courses within a department.
 
 CREATE TABLE CD_Term_Taught(
 	c_no int 
@@ -50,7 +51,7 @@ CREATE TABLE CD_Term_Taught(
 	t_semester char(24),
 	t_year date,
 	PRIMARY KEY ((c_no, d_name), t_semester, t_year),
-	FOREIGN KEY (c,no, d,name) REFERENCES Course_Departmenet
+	FOREIGN KEY (c,no, d,name) REFERENCES Course_Department
 	)
 
 We assume that the we can uniquely identify a course by its name, the department sponsoring it and the semester year it was taught. The entities c_no and d_name are set as a tuple within the primary key to keep the constraint that each course is only sponsored by a single department. There is no constraint for set for professor. 
