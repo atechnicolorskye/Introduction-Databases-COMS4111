@@ -1,5 +1,4 @@
 \documentclass[twoside]{Homework}
-\usepackage{wasysym}
 
 \studname{Si Kai Lee}
 \uni{sl3950}
@@ -14,21 +13,21 @@
 \subsection*{a}
 Let liquor be $L$ and sales be $S$.\\
 \noindent 
-Let $\rho(C(1->\textrm{lid1}, 7->\textrm{lid2}), L \times S)$ be $X$\\
+Let $\rho(C(1->\textrm{lid1}, 7->\textrm{lid2}), L \times S)$ be $X$.\\
 \noindent
-Names = $\pi_{\textrm{name}}(\sigma_{\substack{\textrm{lid1}\ =\ \textrm{lid2}\\ \textrm{month}\ =\ \textrm{December}\\ \textrm{county}\ =\ {Polk}\\\textrm{quantity}\ >=\ 1}}(X)
+Names = $\pi_{\textrm{name}}(\sigma_{\substack{\textrm{lid1}\ =\ \textrm{lid2}\\ \textrm{month}\ =\ \textrm{December}\\ \textrm{county}\ =\ \textrm{Polk}\\\textrm{quantity}\ >=\ 1}}(X))
 \cap 
-\sigma_{\substack{\textrm{lid1}\ =\ \textrm{lid2}\\ \textrm{month}\ =\ \textrm{December}\\ \textrm{county}\ =\ {Linn}\\\textrm{quantity}\ >=\ 1}}(X))$
+\pi_{\textrm{name}}(\sigma_{\substack{\textrm{lid1}\ =\ \textrm{lid2}\\ \textrm{month}\ =\ \textrm{December}\\ \textrm{county}\ =\ \textrm{Linn}\\\textrm{quantity}\ >=\ 1}}(X))$
 
 \subsection*{b}
 Let liquor be $L$ and sales be $S$.\\
 \noindent 
-Let $\rho(C(1->\textrm{lid1}, 7->\textrm{lid2}), L \times S)$ be $X$\\
+Let $L \bowtie S$ be $X$.\\
 \noindent
 Manufacturers = $\pi_{\textrm{manufacturer}}
-\sigma_{1 \neq 10}((\sigma_{\substack{\textrm{lid1}\ =\ \textrm{lid2}\\ \textrm{month}\ =\ \textrm{January}\\ \textrm{county}\ =\ {Polk}\\\textrm{quantity}\ >=\ 1}}(X)
+\sigma_{1 \neq 9}((\sigma_{\substack{\textrm{month}\ =\ \textrm{January}\\ \textrm{county}\ =\ \textrm{Polk}\\\textrm{quantity}\ >=\ 1}}(X)
 \bowtie_{\textrm{manufacturer}}
-\sigma_{\substack{\textrm{lid1}\ =\ \textrm{lid2}\\ \textrm{month}\ =\ \textrm{January}\\ \textrm{county}\ =\ {Polk}\\\textrm{quantity}\ >=\ 1}}(X)))$
+\sigma_{\substack{\textrm{month}\ =\ \textrm{January}\\ \textrm{county}\ =\ \textrm{Polk}\\\textrm{quantity}\ >=\ 1}}(X)))$
 
 \section*{Problem 3}
 \subsection*{a}
@@ -51,49 +50,22 @@ x & a
     1 & x & c & 3 \\
     3 & y & a & 3 \\
     3 & x & a & 3 \\
-    1 & x & c & 3 \\
-    3 & y & a & 3 \\
-    3 & x & a & 3 \\
     \end{tabular}
 \end{table}
 
 \subsection*{c}
 \begin{table}[h]
     \begin{tabular}{llllll}
-    A & B & C & A & B & D \\
-    1 & x & a & 3 & y & c \\
-    1 & x & a & 3 & x & a \\
+    A & B & C & A & B & D\\
+    1 & x & a & 3 & y & a\\
+    1 & x & a & 3 & x & a\\
     \end{tabular}
 \end{table}
 
 \subsection*{d}
-Empty T1 as T1 - T2 = T1, hence T1- (T1 -T2) = Null 
-\begin{table}[h]
-\begin{tabular}{lll}
-A & B & C\\
-Null & Null & Null\\
-Null & Null & Null\\
-Null & Null & Null
-\end{tabular}
-\end{table}
+Since T1 as T1 - T2 = T1, hence T1- (T1 -T2) results in an empty table. 
 
-
-\newpage
 \subsection*{e}
-Since the two tables have no common attributes, cross product with empty T2
-\begin{table}[h]
-    \begin{tabular}{llllll}
-    A & B & C & A & B & D \\
-    1 & x & a &  &  &  \\
-    2 & y & b &  &  &  \\
-    3 & z & b &  &  &  \\
-    1 & x & a &  &  &  \\
-    2 & y & b &  &  &  \\
-    3 & z & b &  &  &  \\
-    1 & x & a &  &  &  \\
-    2 & y & b &  &  &  \\
-    3 & z & b &  &  &  \\
-    \end{tabular}
-\end{table}
-
+Since T1 does not have a column D, there would not be a common column to natural join, hence an empty table 
+% http://stackoverflow.com/questions/18738836/relational-algebra-natural-join-few-basics
 \end{document} 
