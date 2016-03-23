@@ -34,6 +34,21 @@ from movies m
 group by m.title, n.won
 
 -- 6
-select max(count(n.mid))
-from nominees n
-group by n.mid
+select max(count)
+from (select count(n.mid) as count
+      from nominees n
+      group by n.mid) c
+
+-- 7
+select m.title, count(n.mid), sum(n.won::int)
+from movies m
+    left outer join nominees n on n.mid = m.mid
+group by m.title
+
+-- 8
+select m.title
+from movies m, (select max(count) from (select count(n.mid) as count from nominees n group by n.mid) c) max,
+    (select n.mid, count(n.mid) from nominees n group by n.mid) c
+where c.count = max and
+      c.mid = m.mid
+

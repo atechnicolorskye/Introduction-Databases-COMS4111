@@ -19,7 +19,7 @@ where cid in (select cid
 select distinct name
 from customers c, orders o, orderlines ol, items i
 where ol.iid = i.iid and
-      description = 'Nexus 5X' and
+      i.description = 'Nexus 5X' and
       o.oid = ol.oid and
       c.cid = o.cid
 
